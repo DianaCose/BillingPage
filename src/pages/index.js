@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import BillingPage from './billing';
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
         <title>Billing Page</title>
       </Head>
       <main>
-        Test 
+        <BillingPage />
       </main>
     </div>
   );

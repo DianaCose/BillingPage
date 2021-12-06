@@ -1,13 +1,19 @@
-import { Container } from '@material-ui/core';
 import Sidebar from '../components/Sidebar';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import { Grid } from '@material-ui/core';
+
+const drawerWidth = 240;
 
 function BillingPage() {
   return (
-    <Container>
- test
+    <div>
+      <Sidebar style={{ width: drawerWidth }} />
 
- <Sidebar />
-    </Container>
+      <Header style={{ width: `calc(100% - ${drawerWidth}px)` }} />
+
+      <Footer />
+    </div>
   );
 }
 

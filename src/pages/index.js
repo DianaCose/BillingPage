@@ -7,9 +7,8 @@ export default function Home() {
       <Head>
         <title>Billing Page</title>
       </Head>
-      <main>
-        <BillingPage />
-      </main>
+
+      <BillingPage />
     </div>
   );
 }

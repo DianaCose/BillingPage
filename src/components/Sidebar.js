@@ -8,9 +8,6 @@ import {
   ListItemIcon,
   Typography,
   makeStyles,
-  CssBaseline,
-  AppBar,
-  Toolbar,
 } from '@material-ui/core';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
@@ -19,102 +16,78 @@ import PlayForWorkOutlinedIcon from '@material-ui/icons/PlayForWorkOutlined';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-  },
+const useStyles = makeStyles({
   drawer: {
+    zindex: '-1',
+    boxShadow: ".3em 0 .3em -.4em #888",
     width: drawerWidth,
-    flexShrink: 0,
+    '& .MuiDrawer-paper': {
+      height: 'calc(100vh - 60px)',
+    },
+
   },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-  },
-}));
+});
 
 const Sidebar = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            Billing
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
+    <Drawer className={classes.drawer} variant="permanent" anchor="left">
+      <Box
+        component="div"
+        style={{
+          backgroundColor: '#014656',
+          color: 'white',
+          display: 'flex',
+          flexDirection: 'column',
+          height: 80,
         }}
-        anchor="left"
       >
-        <Box
-          component="div"
-          style={{ backgroundColor: '#014656', color: 'white' }}
-        >
-          <p>Viasat</p>
-          <Typography>Alex Garcia</Typography>
-          <Typography>alex.garcia@gmail.com</Typography>
-        </Box>
+        <Typography variant="caption">Viasat</Typography>
+        <Typography variant="h6">Alex Garcia</Typography>
+        <Typography variant="body2">alex.garcia@gmail.com</Typography>
+      </Box>
+      <List>
+        <ListItem>
+          <ListItemIcon>
+            <HomeOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="HOME" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <AccountBalanceWalletOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="BILLING" />
+        </ListItem>
+      </List>
 
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <HomeOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="HOME" />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <AccountBalanceWalletOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="BILLING" />
-          </ListItem>
-        </List>
+      <Divider />
+      <List>
+        <ListItem>
+          <ListItemIcon>
+            <AccountCircleOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="ACCOUNT SETTINGS" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <AccountBalanceWalletOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="HELP FAQ" />
+        </ListItem>
+      </List>
+      <Divider />
 
-        <Divider />
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <AccountCircleOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="ACCOUNT SETTINGS" />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <AccountBalanceWalletOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="HELP FAQ" />
-          </ListItem>
-        </List>
-        <Divider />
-
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <PlayForWorkOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="LOG OUT" />
-          </ListItem>
-        </List>
-      </Drawer>
-    </div>
+      <List>
+        <ListItem>
+          <ListItemIcon>
+            <PlayForWorkOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="LOG OUT" />
+        </ListItem>
+      </List>
+    </Drawer>
   );
 };
 

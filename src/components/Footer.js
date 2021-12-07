@@ -1,68 +1,39 @@
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  makeStyles,
-} from '@material-ui/core';
+import { Stack } from '@mui/material';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
-const useStyles = makeStyles({
-  footer: {
-    position: 'absolute',
-    zIndex: 1300,
-    bottom: 0,
-    left: 0,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    backgroundColor: '#FBFCFD',
-    color: '#465967',
-    height: 44,
-  },
-});
-
-const Footer = () => {
-  const classes = useStyles();
-
+function Footer() {
   return (
-    <footer className={classes.footer}>
-      <Container maxWidth="sx">
-        <Grid
-          container
-          spacing={2}
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Grid item>
-            <Box>
-              <Grid container spacing={2} alignItems="center">
-                <Grid item>
-                  <Typography variant="subtitle1">Blog</Typography>
-                </Grid>
-                <Grid item>
-                  <Typography variant="subtitle1">About us</Typography>
-                </Grid>
-                <Grid item>
-                  <Typography variant="subtitle1">T&C</Typography>
-                </Grid>
-                <Grid item>
-                  <Typography variant="subtitle1">Privacy Policy</Typography>
-                </Grid>
-              </Grid>
-            </Box>
-          </Grid>
-          <Grid item>
-            <Box>
-              <Typography>
-                Viasat Internet is a service provided by Viasat Europe
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
-    </footer>
+    <Grid
+      container
+      height='44px'
+      position="absolute"
+      bottom="0"
+      justifyContent="space-between"
+      alignItems="center"
+      sx={{ backgroundColor: '#FBFCFD', color: '#465967' }}
+    >
+      <Grid item xs={8}>
+        <Stack direction="row" spacing={3}>
+          <Typography sx={{ml: '2px'}}> Blog</Typography>
+
+          <Typography sx={{p: '2'}}>About us</Typography>
+
+          <Typography sx={{p: '2'}}>T&C</Typography>
+
+          <Typography sx={{p: '2'}}>Privacy Policy</Typography>
+        </Stack>
+      </Grid>
+      <Grid item xs={4}>
+      
+          <Typography>
+            Viasat Internet is a service provided by Viasat Europe
+          </Typography>
+
+      </Grid>
+    </Grid>
   );
-};
+}
 
 export default Footer;

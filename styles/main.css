@@ -1,5 +1,6 @@
-/* @import url(‘https://fonts.googleapis.com/css2?family=Source+Sans+Pro:300,400,500,700,800,900’);
+@import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Dosis:wght@300;400&family=EB+Garamond&family=Libre+Baskerville&display=swap');
 
-html, body {
+body {
   font-family: ‘Source Sans Pro’;
-} */
+  margin: 0;
+} 

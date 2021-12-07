@@ -1,11 +1,19 @@
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemIcon from '@mui/material/ListItemIcon';
+import { drawerWidth } from './Sidebar';
+import {
+  AppBar,
+  CssBaseline,
+  IconButton,
+  Toolbar,
+  Box,
+  Drawer,
+  Divider,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {
   HomeOutlined,
   AccountBalanceWalletOutlined,
@@ -14,26 +22,13 @@ import {
   PowerSettingsNewOutlined,
 } from '@mui/icons-material';
 
-export const drawerWidth = 240;
-
-const Sidebar = () => {
-  return (
-    <Drawer
-      variant="permanent"
-      anchor="left"
-      sx={{
-        width: drawerWidth,
-        boxShadow: '.3em 0 .3em -.4em #888',
-        '& .MuiDrawer-paper': {
-          height: 'calc(100vh - 60px)',
-        },
-      }}
-    >
-      <Box
-        component="div"
-        style={{
+function ResponsiveSidebar() {
+  const drawer = (
+    <div>
+      <Toolbar
+        sx={{
           backgroundColor: '#014656',
-          color: 'white',
+          color: '#ffff',
           display: 'flex',
           flexDirection: 'column',
           height: 80,
@@ -48,7 +43,8 @@ const Sidebar = () => {
         <Typography variant="body2" align="left">
           alex.garcia@gmail.com
         </Typography>
-      </Box>
+      </Toolbar>
+      <Divider />
       <List>
         <ListItem button>
           <ListItemIcon>
@@ -80,7 +76,6 @@ const Sidebar = () => {
         </ListItem>
       </List>
       <Divider />
-
       <List>
         <ListItem button>
           <ListItemIcon>
@@ -89,8 +84,47 @@ const Sidebar = () => {
           <ListItemText primary="LOG OUT" />
         </ListItem>
       </List>
-    </Drawer>
+    </div>
   );
-};
 
-export default Sidebar;
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+      >
+        <Drawer
+          variant="temporary"
+          sx={{
+            boxShadow: '.3em 0 .3em -.4em #888',
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+              height: 'calc(100vh - 60px)',
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+              height: 'calc(100vh - 60px)',
+            },
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+    </Box>
+  );
+}
+
+export default ResponsiveSidebar;

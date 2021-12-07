@@ -1,26 +1,16 @@
-import { makeStyles } from '@material-ui/core';
-import Sidebar, { drawerWidth } from '../components/Sidebar';
+import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
+import ResponsiveSidebar from '../components/ResponsiveSidebar';
 
-const useStyles = makeStyles({
-  main: {
-    marginLeft: `${drawerWidth}px`,
-    backgroundColor: '#FBFCFD',
-  },
-});
-
-function BillingPage() {
-  const classes = useStyles();
-
+function Billing() {
   return (
     <>
-      <Sidebar />
-      <main className={classes.main}>
-        <h1>Billing</h1>
-      </main>
+      <ResponsiveSidebar />
+      <Header />
       <Footer />
     </>
   );
 }
 
-export default BillingPage;
+export default Billing;

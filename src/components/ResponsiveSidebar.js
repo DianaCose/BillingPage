@@ -1,8 +1,5 @@
-import { drawerWidth } from './Sidebar';
 import {
-  AppBar,
   CssBaseline,
-  IconButton,
   Toolbar,
   Box,
   Drawer,
@@ -13,7 +10,6 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {
   HomeOutlined,
   AccountBalanceWalletOutlined,
@@ -21,6 +17,8 @@ import {
   ContactSupportOutlined,
   PowerSettingsNewOutlined,
 } from '@mui/icons-material';
+
+const drawerWidth = 240;
 
 function ResponsiveSidebar() {
   const drawer = (
@@ -34,17 +32,11 @@ function ResponsiveSidebar() {
           height: 80,
         }}
       >
-        <Typography variant="caption" align="right">
-          Viasat
-        </Typography>
-        <Typography variant="h6" align="left">
-          Alex Garcia
-        </Typography>
-        <Typography variant="body2" align="left">
-          alex.garcia@gmail.com
-        </Typography>
+        <Typography variant="caption">Viasat</Typography>
+        <Typography variant="h6">Alex Garcia</Typography>
+        <Typography variant="body2">alex.garcia@gmail.com</Typography>
       </Toolbar>
-      <Divider />
+
       <List>
         <ListItem button>
           <ListItemIcon>
@@ -97,6 +89,11 @@ function ResponsiveSidebar() {
         <Drawer
           variant="temporary"
           sx={{
+            fontFamily: 'Source Sans Pro',
+            fontSize: '14px',
+            fontWeight: '700',
+            color: '#32424E',
+            backgroundColor: '#FFFFFF',
             boxShadow: '.3em 0 .3em -.4em #888',
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': {
@@ -111,6 +108,11 @@ function ResponsiveSidebar() {
         <Drawer
           variant="permanent"
           sx={{
+            fontFamily: 'Source Sans Pro',
+            fontSize: '14px',
+            fontWeight: '700',
+            color: '#32424E',
+            backgroundColor: '#FFFFFF',
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',

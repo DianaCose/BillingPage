@@ -1,16 +1,15 @@
-import Sidebar from '../components/Sidebar';
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ResponsiveSidebar from '../components/ResponsiveSidebar';
+import Invoices from '../components/Invoices';
+import Footer from '../components/Footer';
 
-function Billing() {
+export default function Billing() {
   return (
     <>
-      <ResponsiveSidebar />
-      <Header />
-      <Footer />
+    <ResponsiveSidebar />
+    <Header />
+    <Invoices />
+    <Footer/>
     </>
-  );
+  )
 }
-
-export default Billing;

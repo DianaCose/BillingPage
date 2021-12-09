@@ -1,11 +1,16 @@
-import { Box } from '@mui/system';
+import { Stack } from '@mui/material';
+import { Typography } from '@mui/system';
 import Invoice from './Invoice';
-import { headerHeight } from './Header';
 
-export default function Invoices() {
+function Invoices() {
   return (
-    <Box component="div">
+    <Stack component="div">
+      <Typography variant="h6" sx={{ fontSize: 16 }}>
+        
+        My invoices
+      </Typography>
       <Invoice />
-    </Box>
+    </Stack>
   );
 }
+export default Invoices;

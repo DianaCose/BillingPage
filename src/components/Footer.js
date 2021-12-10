@@ -3,12 +3,15 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+export const footerHeight = 44;
+
 function Footer() {
   return (
     <Grid
       container
       height="44px"
-      position="absolute"
+      width='100%'
+      position="fixed"
       bottom="0"
       justifyContent="space-between"
       alignItems="center"

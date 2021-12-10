@@ -1,6 +1,4 @@
 import {
-  CssBaseline,
-  Toolbar,
   Box,
   Drawer,
   Divider,
@@ -9,6 +7,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Stack,
 } from '@mui/material';
 import {
   HomeOutlined,
@@ -18,24 +17,39 @@ import {
   PowerSettingsNewOutlined,
 } from '@mui/icons-material';
 
-const drawerWidth = 240;
+export const drawerWidth = 241;
 
 function ResponsiveSidebar() {
   const drawer = (
     <div>
-      <Toolbar
+      <Stack
         sx={{
           backgroundColor: '#014656',
           color: '#ffff',
-          display: 'flex',
-          flexDirection: 'column',
+          direction: 'column',
           height: 80,
+          width: '100%',
         }}
       >
-        <Typography variant="caption">Viasat</Typography>
-        <Typography variant="h6">Alex Garcia</Typography>
-        <Typography variant="body2">alex.garcia@gmail.com</Typography>
-      </Toolbar>
+        <Typography
+          variant="caption"
+          sx={{ textAlign: 'right', marginRight: '5px' }}
+        >
+          Viasat
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{ fontSize: '12px', marginLeft: '5px' }}
+        >
+          Alex Garcia
+        </Typography>
+        <Typography
+          variant="caption"
+          sx={{ fontSize: '12px', opacity: 0.8, marginLeft: '5px' }}
+        >
+          alex.garcia@gmail.com
+        </Typography>
+      </Stack>
 
       <List>
         <ListItem button>
@@ -80,21 +94,26 @@ function ResponsiveSidebar() {
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+    <Box
+      sx={{
+        display: 'flex',
+        fontSize: '14px',
+        fontWeight: '700',
+        color: '#32424E',
+        backgroundColor: '#FFFFFF',
+        boxShadow: '.3em 0 .3em -.4em #888',
+      }}
+    >
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{
+          width: { sm: drawerWidth },
+          flexShrink: { sm: 0 },
+        }}
       >
         <Drawer
           variant="temporary"
           sx={{
-            fontFamily: 'Source Sans Pro',
-            fontSize: '14px',
-            fontWeight: '700',
-            color: '#32424E',
-            backgroundColor: '#FFFFFF',
-            boxShadow: '.3em 0 .3em -.4em #888',
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
@@ -108,11 +127,6 @@ function ResponsiveSidebar() {
         <Drawer
           variant="permanent"
           sx={{
-            fontFamily: 'Source Sans Pro',
-            fontSize: '14px',
-            fontWeight: '700',
-            color: '#32424E',
-            backgroundColor: '#FFFFFF',
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',

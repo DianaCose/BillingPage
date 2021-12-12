@@ -13,8 +13,8 @@ function HeaderToolbar() {
       sx={{
         background: 'linear-gradient(90deg, #26A1B7 0%, #0372AE 100%)',
         color: '#ffff',
-        sm: { height: '200px' },
-        xs: { height: 'auto' },
+        height: '100%',
+        maxHeight: '200px',
       }}
     >
       <Grid
@@ -23,11 +23,16 @@ function HeaderToolbar() {
         alignItems="center"
         marginBottom="25px"
       >
-        <Grid item xs={4}>
+        <Grid item xs={4} sx={{ margin: '5px' }}>
           <Stack
             direction="column"
             textAlign="center"
-            sx={{ height: '146', padding: '2px', margin: '1px ' }}
+            sx={{
+              hheight: '100%',
+              maxHeight: '146px',
+              padding: '2px',
+              margin: '1px ',
+            }}
           >
             <Typography variant="h5" sx={{ fontSize: '20px' }}>
               Account balance
@@ -47,16 +52,26 @@ function HeaderToolbar() {
           item
           sx={{
             width: 'auto',
-            height: '146',
+            height: '100%',
+            maxHeight: '146px',
+            margin: '5px',
             backgroundColor: 'rgb(255,255,255, 0.2)',
             display: { xs: 'none', sm: 'flex' },
           }}
         >
-          <Stack direction="row" spacing={3}>
+          <Stack
+            direction="row"
+            spacing={3}
+            sx={{ paddingTop: '5px', paddingBottom: '5px', margin: '20px' }}
+          >
             <Box
               component="div"
               textAlign="center"
-              sx={{ width: 164, padding: 3 }}
+              sx={{
+                width: '100%',
+                minWidth: '164px',
+                height: 'auto',
+              }}
             >
               <Typography>
                 <HistoryOutlined />
@@ -73,7 +88,11 @@ function HeaderToolbar() {
             <Box
               component="div"
               textAlign="center"
-              sx={{ padding: 3, width: 164 }}
+              sx={{
+                width: '100%',
+                minWidth: '164px',
+                height: 'auto',
+              }}
             >
               <Typography>
                 <CalendarTodayOutlined />

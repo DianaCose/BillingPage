@@ -8,7 +8,8 @@ function HeaderTop() {
   return (
     <Toolbar
       sx={{
-        height: 80,
+        height: '100%',
+        maxHeight:"80px",
         background: 'linear-gradient(90deg, #26A1B7 0%, #0372AE 100%)',
         color: '#ffff',
         display: 'flex',
@@ -29,7 +30,7 @@ function HeaderTop() {
             xs: 'none',
             sm: 'block',
             fontWeight: 'bold',
-            fontSize: '24px',
+            fontSize: '26px',
           },
         }}
       >

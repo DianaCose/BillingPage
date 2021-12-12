@@ -50,7 +50,6 @@ function ResponsiveSidebar() {
           alex.garcia@gmail.com
         </Typography>
       </Stack>
-
       <List>
         <ListItem button>
           <ListItemIcon>
@@ -65,7 +64,6 @@ function ResponsiveSidebar() {
           <ListItemText primary="BILLING" />
         </ListItem>
       </List>
-
       <Divider />
       <List>
         <ListItem button>

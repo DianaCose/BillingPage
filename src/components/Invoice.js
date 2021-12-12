@@ -23,6 +23,7 @@ function Invoice() {
         backgroundColor: '#FFFFFF',
         height: '104px',
         width: '100%',
+        maxWidth: '661px' 
       }}
     >
       <Stack

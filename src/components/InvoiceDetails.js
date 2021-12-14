@@ -1,7 +1,8 @@
 import { Paper, Stack, Typography, Divider, Button } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 
-function InvoiceDetails() {
+function InvoiceDetails({invoice, onClose}) {
+  const {amount, due, id, status } = invoice;
   return (
     <Paper
       sx={{
@@ -20,11 +21,9 @@ function InvoiceDetails() {
         >
           View invoice as PDF
         </Typography>
-        <Typography
-          sx={{ color: '#32424E', fontSize: '14px', fontWeight: 'bold' }}
-        >
-          <ClearIcon />
-        </Typography>
+      
+          <ClearIcon onClick={onClose}/>
+    
       </Stack>
 
       <Stack
@@ -63,10 +62,10 @@ function InvoiceDetails() {
           variant="subtitle1"
           sx={{ fontSize: '14px', opacity: '0.4' }}
         >
-         00584758832
+         {id}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 14, opacity: '0.4' }}>
-         21/10/2020
+         {due}
         </Typography>
       </Stack>
 
@@ -102,7 +101,7 @@ function InvoiceDetails() {
           21/09/2020-21/10/2020
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 16 }}>
-          49,99{'\u20AC'}
+         {amount}{'\u20AC'}
         </Typography>
       </Stack>
 
@@ -123,7 +122,7 @@ function InvoiceDetails() {
           variant="body1"
           sx={{ fontSize: '20px', fontWeight: 'bold' }}
         >
-          49,99{'\u20AC'}
+          {amount}{'\u20AC'}
         </Typography>
       </Stack>
     </Paper>

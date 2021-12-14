@@ -13,4 +13,3 @@ export const invoiceData = [
 ];
 
 
-const statusColor = ['ISSUED']

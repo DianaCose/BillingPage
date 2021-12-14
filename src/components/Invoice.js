@@ -1,15 +1,6 @@
-import {
-  Typography,
-  Paper,
-  Button,
-  Grid,
-  Stack,
-  Chip,
-  Box,
-} from '@mui/material';
+import { Typography, Paper, Stack, Chip, Box } from '@mui/material';
 
 function Invoice(props) {
-
   return (
     <Paper
       sx={{
@@ -21,6 +12,7 @@ function Invoice(props) {
         height: '104px',
         width: '100%',
         maxWidth: '661px',
+        cursor: 'pointer',
       }}
     >
       <Stack
@@ -57,12 +49,11 @@ function Invoice(props) {
           variant="body1"
           sx={{ fontSize: 24, marginRight: '2', padding: '2px' }}
         >
-          {props.amount}{'\u20AC'}
+          {props.amount}
+          {'\u20AC'}
         </Typography>
 
-        <Box
-          sx={{ textAlign: 'right', paddingRight: '1px', cursor: 'pointer' }}
-        >
+        <Box sx={{ textAlign: 'right', paddingRight: '1px' }}>
           <Typography
             variant="subtitle1"
             sx={{ fontSize: '14px', opacity: '0.6', color: '#32424E' }}

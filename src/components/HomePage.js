@@ -3,10 +3,11 @@ import Invoices from './Invoices';
 import HeaderTop from './HeaderTop';
 import HeaderToolbar from './HeaderToolbar';
 import { Box } from '@mui/system';
-import {invoiceData} from '../../InvoiceDatabase';
+import { invoiceData } from '../../InvoiceDatabase';
 
 
 function HomePage(props) {
+ 
 
   return (
     <Box
@@ -18,7 +19,7 @@ function HomePage(props) {
     >
       <HeaderTop />
       <HeaderToolbar />
-      <Invoices invoiceData={invoiceData}/>
+      <Invoices invoiceData={invoiceData} />
     </Box>
   );
 }

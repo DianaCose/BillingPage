@@ -1,17 +1,18 @@
 import { Box, List, ListItem, ListItemText, Grid } from '@mui/material';
 import Invoice from './Invoice';
 import InvoiceDetails from './InvoiceDetails';
-import { invoiceData } from '../../InvoiceDatabase';
+import { useState } from 'react';
 
 function Invoices(props) {
- 
+  const [showDetails, setShowDetails] = useState(null);
+
   return (
     <Box
       component="div"
       sx={{
         background: '#DEE4E8',
         maxWidth: '100%',
-        height: '100%',
+        minHeight: '100vh',
         backgroundColor: '#DEE4E8',
       }}
       justifyContent="center"
@@ -21,7 +22,7 @@ function Invoices(props) {
         container
         columnSpacing={{ sm: 3 }}
         sx={{
-          justifyContent: 'space-around',
+          justifyContent: 'center',
         }}
       >
         <Grid item sx={{ width: '100%', maxWidth: '661px' }}>
@@ -53,23 +54,22 @@ function Invoices(props) {
                 </ListItemText>
               </ListItem>
 
-              { props.invoiceData.map((invoice) => 
-
-                   <ListItem key={invoice.id}>
-               
-                   <Invoice
-                      id={invoice.id}
-                      status={invoice.status}
-                      due={invoice.due}
-                      amount={invoice.amount}
-                    />
-                 
+              {props.invoiceData.map((invoice) => (
+                <ListItem
+                  key={invoice.id}
+                  onClick={() => {
+                    console.log('invoice', invoice);
+                    setShowDetails(invoice);
+                  }}
+                >
+                  <Invoice
+                    id={invoice.id}
+                    status={invoice.status}
+                    due={invoice.due}
+                    amount={invoice.amount}
+                  />
                 </ListItem>
-              )}
-
-              {/* <ListItem>
-                <Invoice />
-              </ListItem> */}
+              ))}
             </List>
           </Box>
         </Grid>
@@ -78,7 +78,14 @@ function Invoices(props) {
           item
           sx={{ display: { xs: 'none', sm: 'flex' }, marginTop: '60px' }}
         >
-          <InvoiceDetails />
+          {showDetails && (
+            <InvoiceDetails
+              invoice={showDetails}
+              onClose={() => {
+                setShowDetails(null);
+              }}
+            />
+          )}
         </Grid>
       </Grid>
     </Box>

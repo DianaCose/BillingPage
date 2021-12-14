@@ -13,7 +13,7 @@ function InvoiceDetails() {
         marginBottom: { xs: '0', sm: '70px' },
       }}
     >
-      <Stack direction="row" spacing={21} sx={{ marginBottom: '7px' }}>
+      <Stack direction="row" spacing={22} sx={{ marginBottom: '7px' }}>
         <Typography
           variant="subtitle1"
           sx={{ color: '#0AA5AB', fontSize: '14px', fontWeight: 'bold' }}
@@ -21,7 +21,6 @@ function InvoiceDetails() {
           View invoice as PDF
         </Typography>
         <Typography
-          variant="subtitle1"
           sx={{ color: '#32424E', fontSize: '14px', fontWeight: 'bold' }}
         >
           <ClearIcon />
@@ -30,7 +29,28 @@ function InvoiceDetails() {
 
       <Stack
         direction="row"
-        spacing={21}
+        spacing={24}
+        sx={{
+          background: {
+            xs: 'linear-gradient(90deg, #26A1B7 0%, #0372AE 100%)',
+            sm: '#FFFFFF',
+          },
+        }}
+      >
+        <Typography
+          variant="subtitle1"
+          sx={{ fontSize: '14px', opacity: '0.4' }}
+        >
+          Invoice number
+        </Typography>
+        <Typography variant="subtitle1" sx={{ fontSize: 14, opacity: '0.4' }}>
+          Paid on 
+        </Typography>
+      </Stack>
+
+      <Stack
+        direction="row"
+        spacing={23}
         sx={{
           marginBottom: '25px',
           background: {
@@ -43,10 +63,10 @@ function InvoiceDetails() {
           variant="subtitle1"
           sx={{ fontSize: '14px', opacity: '0.4' }}
         >
-          Invoice number <br /> 00584758832
+         00584758832
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 14, opacity: '0.4' }}>
-          Paid on <br /> 21/10/2020
+         21/10/2020
         </Typography>
       </Stack>
 

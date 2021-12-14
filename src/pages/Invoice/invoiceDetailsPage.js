@@ -3,17 +3,17 @@ import {
   Typography,
   Divider,
   Button,
-  Container,
+  Box,
   IconButton,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-function InvoiceDetailsOnMobile() {
+function InvoiceDetailsPage() {
   return (
-    <Container
+    <Box
       sx={{
         width: '100%',
-        width: { xs: '100vw', sm: '345px' },
+        minWidth: { xs: '100vw', sm: '345px' },
         height: '100%',
         maxHeight: { xs: '100vh', sm: '337px' },
         padding: { xs: '0', sm: '10px' },
@@ -34,7 +34,7 @@ function InvoiceDetailsOnMobile() {
 
       <Stack
         direction="row"
-        spacing={55}
+        spacing={47}
         sx={{
           padding: '10px 10px 0 10px',
           background: 'linear-gradient(90deg, #26A1B7 0%, #0372AE 100%)',
@@ -48,9 +48,10 @@ function InvoiceDetailsOnMobile() {
           Paid on
         </Typography>
       </Stack>
+
       <Stack
         direction="row"
-        spacing={49}
+        spacing={40}
         sx={{
           marginBottom: '25px',
           padding: '0 10px 10px 10px',
@@ -66,7 +67,11 @@ function InvoiceDetailsOnMobile() {
         </Typography>
       </Stack>
 
-      <Stack direction="row" spacing={55} sx={{ marginBottom: '10px', padding:'10px',color: '#32424E'  }}>
+      <Stack
+        direction="row"
+        spacing={50}
+        sx={{ marginBottom: '10px', padding: '10px', color: '#32424E' }}
+      >
         <Typography
           variant="body1"
           sx={{ fontSize: '14px', fontWeight: 'bold' }}
@@ -81,16 +86,24 @@ function InvoiceDetailsOnMobile() {
         </Typography>
       </Stack>
 
-      <Stack direction="row" spacing={45} sx={{ paddingLeft:'10px', paddingRight:'10px', color: '#32424E' }}>
+      <Stack
+        direction="row"
+        spacing={45}
+        sx={{ paddingLeft: '10px', paddingRight: '10px', color: '#32424E' }}
+      >
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
           ILIMITADA 30
         </Typography>
       </Stack>
-      <Stack direction="row" spacing={44} sx={{ marginBottom: '7px', paddingLeft:'10px', color: '#32424E' }}>
+      <Stack
+        direction="row"
+        spacing={44}
+        sx={{ marginBottom: '7px', paddingLeft: '10px', color: '#32424E' }}
+      >
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
-         21/09/2020-21/10/2020
+          21/09/2020-21/10/2020
         </Typography>
-        <Typography variant="subtitle1" sx={{ fontSize: '16px'}}>
+        <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
           49,99{'\u20AC'}
         </Typography>
       </Stack>
@@ -100,7 +113,12 @@ function InvoiceDetailsOnMobile() {
       <Stack
         direction="row"
         spacing={52}
-        sx={{ marginTop: '20px', marginBottom: '20px', paddingLeft:'10px',color: '#32424E'  }}
+        sx={{
+          marginTop: '20px',
+          marginBottom: '20px',
+          paddingLeft: '10px',
+          color: '#32424E',
+        }}
       >
         <Typography
           variant="body1"
@@ -124,14 +142,14 @@ function InvoiceDetailsOnMobile() {
             padding: '10px',
             borderRadius: '30px',
             color: '#465967',
-            fontSize: '14px'
+            fontSize: '14px',
           }}
         >
           View invoice as a PDF
         </Button>
       </Stack>
-    </Container>
+    </Box>
   );
 }
 
-export default InvoiceDetailsOnMobile;
+export default InvoiceDetailsPage;

@@ -13,8 +13,7 @@ function HeaderToolbar() {
       sx={{
         background: 'linear-gradient(90deg, #26A1B7 0%, #0372AE 100%)',
         color: '#ffff',
-        height: '100%',
-        maxHeight: '200px',
+        padding: '10px',
       }}
     >
       <Grid
@@ -23,22 +22,22 @@ function HeaderToolbar() {
         alignItems="center"
         marginBottom="25px"
       >
-        <Grid item xs={4} sx={{ margin: '5px' }}>
+        <Grid item xs={5} sx={{ margin: '5px' }}>
           <Stack
             direction="column"
             textAlign="center"
             sx={{
-              hheight: '100%',
-              maxHeight: '146px',
+              height: '100%',
+              minHeight: '146px',
               padding: '2px',
               margin: '1px ',
             }}
           >
-            <Typography variant="h5" sx={{ fontSize: '20px' }}>
+            <Typography variant="h6" sx={{ fontSize: '20px' }}>
               Account balance
             </Typography>
             <Typography variant="h2" sx={{ fontSize: '56px' }}>
-              174,97{'\u20AC'}{' '}
+              174,97{'\u20AC'}
             </Typography>
             <Typography variant="caption" sx={{ fontSize: '14px' }}>
               Next invoice will be issued on
@@ -56,7 +55,6 @@ function HeaderToolbar() {
             maxHeight: '146px',
             margin: '5px',
             backgroundColor: 'rgb(255,255,255, 0.2)',
-            display: { xs: 'none', sm: 'flex' },
           }}
         >
           <Stack

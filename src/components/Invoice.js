@@ -8,11 +8,8 @@ import {
   Box,
 } from '@mui/material';
 
-function handleClick() {
-  return <div></div>;
-}
+function Invoice(props) {
 
-function Invoice() {
   return (
     <Paper
       sx={{
@@ -23,7 +20,7 @@ function Invoice() {
         backgroundColor: '#FFFFFF',
         height: '104px',
         width: '100%',
-        maxWidth: '661px' 
+        maxWidth: '661px',
       }}
     >
       <Stack
@@ -35,28 +32,32 @@ function Invoice() {
         }}
       >
         <Typography variant="subtitle1" sx={{ fontSize: 14, opacity: '0.4' }}>
-          Invoice 00584758868
+          Invoice {props.id}
         </Typography>
         <Typography variant="body1" sx={{ fontSize: 20, fontWeight: 'bold' }}>
           October
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 16, opacity: '0.6' }}>
-          Due on <strong>21/10/2020</strong>
+          Due on <strong>{props.due}</strong>
         </Typography>
       </Stack>
 
-      <Stack sx={{ padding: '2px' }}>
+      <Stack>
         <Chip
           size="small"
-          label="Issued"
+          label={props.status}
           sx={{
             backgroundColor: '#64CEFB',
             marginTop: '1px',
             marginBottom: '2px',
+            borderRadius: '30px 0 0 30px',
           }}
         />
-        <Typography variant="body1" sx={{ fontSize: 24, marginRight: '2' }}>
-          49,99{'\u20AC'}
+        <Typography
+          variant="body1"
+          sx={{ fontSize: 24, marginRight: '2', padding: '2px' }}
+        >
+          {props.amount}{'\u20AC'}
         </Typography>
 
         <Box

@@ -27,7 +27,7 @@ function ResponsiveSidebar() {
           backgroundColor: '#014656',
           color: '#ffff',
           direction: 'column',
-          height: 80,
+          height: '80px',
           width: '100%',
         }}
       >
@@ -94,6 +94,7 @@ function ResponsiveSidebar() {
   return (
     <Box
       sx={{
+        fontFamily: 'Source Sans Pro',
         display: 'flex',
         fontSize: '14px',
         fontWeight: '700',

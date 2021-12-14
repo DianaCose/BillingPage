@@ -1,14 +1,18 @@
 import { Box, List, ListItem, ListItemText, Grid } from '@mui/material';
 import Invoice from './Invoice';
 import InvoiceDetails from './InvoiceDetails';
+import { invoiceData } from '../../InvoiceDatabase';
 
-function Invoices() {
+function Invoices(props) {
+ 
   return (
     <Box
       component="div"
       sx={{
         background: '#DEE4E8',
         maxWidth: '100%',
+        height: '100%',
+        backgroundColor: '#DEE4E8',
       }}
       justifyContent="center"
       alignItems="center"
@@ -26,7 +30,6 @@ function Invoices() {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              background: '#DEE4E8',
             }}
             justifyContent="center"
             alignItems="center"
@@ -35,7 +38,6 @@ function Invoices() {
               sx={{
                 width: '100%',
                 maxWidth: '661px',
-                display: { xs: 'none', sm: 'block' },
               }}
             >
               <ListItem>
@@ -50,9 +52,24 @@ function Invoices() {
                   My Invoices
                 </ListItemText>
               </ListItem>
-              <ListItem>
+
+              { props.invoiceData.map((invoice) => 
+
+                   <ListItem key={invoice.id}>
+               
+                   <Invoice
+                      id={invoice.id}
+                      status={invoice.status}
+                      due={invoice.due}
+                      amount={invoice.amount}
+                    />
+                 
+                </ListItem>
+              )}
+
+              {/* <ListItem>
                 <Invoice />
-              </ListItem>
+              </ListItem> */}
             </List>
           </Box>
         </Grid>

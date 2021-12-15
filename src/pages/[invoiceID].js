@@ -7,17 +7,29 @@ import {
   IconButton,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { invoiceData } from '../../InvoiceDatabase';
+import { useRouter } from 'next/router';
 
 function InvoiceDetailsPage() {
+  const router = useRouter();
+  const { invoiceID } = router.query;
+
+  console.log(router.query);
+
+  const invoice = invoiceData.filter(
+    (invoice) => Number(invoiceID) === invoice.id
+  )[0];
+
+  console.log(invoiceData);
+  console.log(invoice);
+
   return (
     <Box
       sx={{
-        width: '100%',
-        minWidth: { xs: '100vw', sm: '345px' },
-        height: '100%',
-        maxHeight: { xs: '100vh', sm: '337px' },
-        padding: { xs: '0', sm: '10px' },
-        marginBottom: { xs: '0', sm: '70px' },
+        width: '100vw',
+        height: '100vh',
+        padding: { xs: '0', md: '10px' },
+        marginBottom: { xs: '0', md: '70px' },
       }}
     >
       <Stack direction="row" spacing={1} sx={{ margin: '7px' }}>
@@ -60,10 +72,10 @@ function InvoiceDetailsPage() {
         }}
       >
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
-          00584758832
+          {invoice.id}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
-          21/10/2020
+          {invoice.due}
         </Typography>
       </Stack>
 
@@ -101,13 +113,12 @@ function InvoiceDetailsPage() {
         sx={{ marginBottom: '7px', paddingLeft: '10px', color: '#32424E' }}
       >
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
-          21/09/2020-21/10/2020
+          {invoice.due}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
-          49,99{'\u20AC'}
+          {invoice.amount}{'\u20AC'}
         </Typography>
       </Stack>
-
       <Divider />
 
       <Stack
@@ -130,14 +141,15 @@ function InvoiceDetailsPage() {
           variant="body1"
           sx={{ fontSize: '20px', fontWeight: 'bold' }}
         >
-          49,99{'\u20AC'}
+          {invoice.amount}{'\u20AC'}
         </Typography>
       </Stack>
+
       <Stack>
         <Button
           variant="outlined"
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { xs: 'block', md: 'none' },
             margin: '30px',
             padding: '10px',
             borderRadius: '30px',

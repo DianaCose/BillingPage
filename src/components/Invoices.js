@@ -1,4 +1,11 @@
-import { Box, List, ListItem, ListItemText, Grid } from '@mui/material';
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  Grid,
+  useTheme,
+} from '@mui/material';
 import Invoice from './Invoice';
 import InvoiceDetails from './InvoiceDetails';
 import { useState } from 'react';
@@ -7,6 +14,8 @@ import { useRouter } from 'next/router';
 function Invoices(props) {
   const [showDetails, setShowDetails] = useState(null);
   const router = useRouter();
+  const { breakpoints } = useTheme();
+  const isMobile = breakpoints.down('md');
 
   return (
     <Box
@@ -46,8 +55,8 @@ function Invoices(props) {
               <ListItem>
                 <ListItemText
                   sx={{
-                    fontSize: 16,
-                    fontWeight: '700',
+                    fontSize: '16px',
+                    fontWeight: 'bold',
                     color: '#32424E',
                     width: 'auto',
                   }}
@@ -60,10 +69,10 @@ function Invoices(props) {
                 <ListItem
                   key={invoice.id}
                   onClick={() => {
-                    console.log('invoice', invoice);
                     setShowDetails(invoice);
-                    
-                    borderColor: '2px solid rgba(10, 165, 171, 0.4)'
+                    if (isMobile) {
+                      router.push(`${invoice.id}`);
+                    }
                   }}
                 >
                   <Invoice
@@ -71,6 +80,8 @@ function Invoices(props) {
                     status={invoice.status}
                     due={invoice.due}
                     amount={invoice.amount}
+    
+                    
                   />
                 </ListItem>
               ))}
@@ -80,9 +91,9 @@ function Invoices(props) {
 
         <Grid
           item
-          sx={{ display: { xs: 'none', sm: 'flex' }, marginTop: '60px' }}
+          sx={{ display: { xs: 'none', md: 'flex' }, marginTop: '60px' }}
         >
-          {showDetails && (
+          {showDetails && !isMobile && ( 
             <InvoiceDetails
               invoice={showDetails}
               onClose={() => {

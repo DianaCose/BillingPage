@@ -9,11 +9,12 @@ function InvoiceDetails({invoice, onClose}) {
     <Paper
       sx={{
         width: '100%',
-        width: { xs: '100vw', sm: '345px' },
+        width: { xs: '100vw', md: '345px' },
         height: '100%',
-        maxHeight: { xs: '100vh', sm: '337px' },
-        padding: { xs: '0', sm: '10px' },
-        marginBottom: { xs: '0', sm: '70px' },
+        maxHeight: { xs: '100vh', md: '337px' },
+        padding: { xs: '0', md: '10px' },
+        marginBottom: { xs: '0', md: '70px' },
+        display: {xs:'none', md: 'block'}
       }}
     >
       <Stack direction="row" spacing={24} sx={{ marginBottom: '7px' }}>

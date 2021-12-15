@@ -94,7 +94,7 @@ function ResponsiveSidebar() {
   return (
     <Box
       sx={{
-        fontFamily: 'Source Sans Pro',
+       
         display: 'flex',
         fontSize: '14px',
         fontWeight: '700',

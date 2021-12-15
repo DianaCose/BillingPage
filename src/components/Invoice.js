@@ -1,18 +1,32 @@
 import { Typography, Paper, Stack, Chip, Box } from '@mui/material';
 
-
-
 function Invoice(props) {
+  const COLORS = {
+    ISSUED: '#64CEFB',
+    PAID: '#7DBE00',
+    OVERDUE: '#CF4520',
+  };
+  const MONTHS = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
-
-const COLORS = {
-  'ISSUED': '#64CEFB',
-  'PAID':'#7DBE00',
-  'OVERDUE':'#CF4520'
-}
 
   return (
-    <Paper
+    <Paper 
+    button
+      variant="outlined"
+      square
       sx={{
         display: 'flex',
         flexDirection: 'row',
@@ -23,6 +37,7 @@ const COLORS = {
         width: '100%',
         maxWidth: '661px',
         cursor: 'pointer',
+        
       }}
     >
       <Stack
@@ -49,10 +64,11 @@ const COLORS = {
           size="small"
           label={props.status}
           sx={{
-            backgroundColor: COLORS[props.status] ,
+            backgroundColor: COLORS[props.status],
             marginTop: '1px',
             marginBottom: '2px',
             borderRadius: '30px 0 0 30px',
+            color: '#FFFFFF',
           }}
         />
         <Typography

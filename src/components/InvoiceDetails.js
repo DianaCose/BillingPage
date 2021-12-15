@@ -1,7 +1,9 @@
 import { Paper, Stack, Typography, Divider, Button } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 
+
 function InvoiceDetails({invoice, onClose}) {
+
   const {amount, due, id, status } = invoice;
   return (
     <Paper
@@ -14,7 +16,7 @@ function InvoiceDetails({invoice, onClose}) {
         marginBottom: { xs: '0', sm: '70px' },
       }}
     >
-      <Stack direction="row" spacing={22} sx={{ marginBottom: '7px' }}>
+      <Stack direction="row" spacing={24} sx={{ marginBottom: '7px' }}>
         <Typography
           variant="subtitle1"
           sx={{ color: '#0AA5AB', fontSize: '14px', fontWeight: 'bold' }}
@@ -22,7 +24,7 @@ function InvoiceDetails({invoice, onClose}) {
           View invoice as PDF
         </Typography>
       
-          <ClearIcon onClick={onClose}/>
+        <ClearIcon onClick={onClose}/>
     
       </Stack>
 
@@ -49,7 +51,7 @@ function InvoiceDetails({invoice, onClose}) {
 
       <Stack
         direction="row"
-        spacing={23}
+        spacing={32}
         sx={{
           marginBottom: '25px',
           background: {
@@ -91,7 +93,7 @@ function InvoiceDetails({invoice, onClose}) {
       </Stack>
       <Stack
         direction="row"
-        spacing={17}
+        spacing={19}
         sx={{ marginBottom: '7px', color: '#32424E' }}
       >
         <Typography
@@ -109,7 +111,7 @@ function InvoiceDetails({invoice, onClose}) {
 
       <Stack
         direction="row"
-        spacing={23}
+        spacing={24}
         sx={{ marginTop: '10px', marginBottom: '30px', color: '#32424E' }}
       >
         <Typography

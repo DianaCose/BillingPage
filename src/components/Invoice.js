@@ -1,6 +1,16 @@
 import { Typography, Paper, Stack, Chip, Box } from '@mui/material';
 
+
+
 function Invoice(props) {
+
+
+const COLORS = {
+  'ISSUED': '#64CEFB',
+  'PAID':'#7DBE00',
+  'OVERDUE':'#CF4520'
+}
+
   return (
     <Paper
       sx={{
@@ -39,7 +49,7 @@ function Invoice(props) {
           size="small"
           label={props.status}
           sx={{
-            backgroundColor: '#64CEFB',
+            backgroundColor: COLORS[props.status] ,
             marginTop: '1px',
             marginBottom: '2px',
             borderRadius: '30px 0 0 30px',

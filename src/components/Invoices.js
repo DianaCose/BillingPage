@@ -2,9 +2,11 @@ import { Box, List, ListItem, ListItemText, Grid } from '@mui/material';
 import Invoice from './Invoice';
 import InvoiceDetails from './InvoiceDetails';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 function Invoices(props) {
   const [showDetails, setShowDetails] = useState(null);
+  const router = useRouter();
 
   return (
     <Box
@@ -60,6 +62,8 @@ function Invoices(props) {
                   onClick={() => {
                     console.log('invoice', invoice);
                     setShowDetails(invoice);
+                    
+                    borderColor: '2px solid rgba(10, 165, 171, 0.4)'
                   }}
                 >
                   <Invoice

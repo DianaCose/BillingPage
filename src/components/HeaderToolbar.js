@@ -6,8 +6,26 @@ import Divider from '@mui/material/Divider';
 import CalendarTodayOutlined from '@mui/icons-material/CalendarTodayOutlined';
 import HistoryOutlined from '@mui/icons-material/HistoryOutlined';
 
-
 function HeaderToolbar(props) {
+
+
+
+  const invoiceOverdue = () => {
+    return props.invoiceData
+      .map((invoice) => {
+        return invoice.status === 'OVERDUE' ? invoice.amount : 0;
+      })
+      .reduce((previousValue, currentValue) => previousValue + currentValue);
+  };
+  const invoiceIssued = () => {
+    return props.invoiceData
+      .map((invoice) => {
+        return invoice.status === 'ISSUED' ? invoice.amount : 0;
+      })
+      .reduce((previousValue, currentValue) => previousValue + currentValue);
+  };
+
+
   return (
     <Box
       component="div"
@@ -53,7 +71,7 @@ function HeaderToolbar(props) {
             </Typography>
             <Typography variant="caption" sx={{ fontSize: '14px' }}>
               Next invoice will be issued on
-              <br/>
+              <br />
               {props.due}
             </Typography>
           </Stack>
@@ -87,7 +105,9 @@ function HeaderToolbar(props) {
                 <HistoryOutlined />
               </Typography>
               <Typography variant="caption">Overdue balance</Typography>
-              <Typography variant="h6">124,98{'\u20AC'}</Typography>
+              <Typography variant="h6">
+                {invoiceOverdue()}{'\u20AC'}
+              </Typography>
             </Box>
             <Divider
               variant="inset"
@@ -108,7 +128,9 @@ function HeaderToolbar(props) {
                 <CalendarTodayOutlined />
               </Typography>
               <Typography variant="caption">Due on 21/10/2020</Typography>
-              <Typography variant="h6">49,99{'\u20AC'}</Typography>
+              <Typography variant="h6">
+                {invoiceIssued()}{'\u20AC'}
+              </Typography>
             </Box>
           </Stack>
         </Grid>

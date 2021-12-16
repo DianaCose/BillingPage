@@ -8,7 +8,6 @@ import { invoiceData } from '../../InvoiceDatabase';
 
 function HomePage(props) {
  
-
   return (
     <Box
       sx={{

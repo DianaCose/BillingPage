@@ -5,6 +5,7 @@ import {
   ListItem,
   ListItemText,
   Grid,
+  Typography,
   useTheme,
 } from '@mui/material';
 import Invoice from './Invoice';
@@ -69,38 +70,34 @@ function Invoices(props) {
                 </ListItemText>
               </ListItem>
 
-              {props.invoiceData.map((invoice) => (
-                <ListItem
-                  sx={{
-                    fontSize: '16px',
-                    color: '#32424E',
-                    width: 'auto',
-                  }}
-                  // isSelected={
-                  //   !isMobile &&
-                  //   selectedInvoice &&
-                  //   invoice.id == showDetails.id
-                  // }
-
-                  key={invoice.id}
-                  onClick={() => {
-                    setSelectedInvoice(invoice.id);
-                    if (isMobile) {
-                      router.push(`${invoice.id}`);
-                    } else {
-                      setShowDetails(invoice);
-                    }
-                  }}
-                >
-                  <Invoice
-                    id={invoice.id}
-                    status={invoice.status}
-                    due={invoice.due}
-                    amount={invoice.amount}
-                    selected={selectedInvoice === invoice.id}
-                  />
-                </ListItem>
-              ))}
+              {props.invoiceData.length === 0
+                ? <Typography variant='body1'sx={{ fontSize: '16px', color:'#32424E', opacity: '0.6', padding: '5px', marginLeft:'7px', }}> There are no invoices available!</Typography>
+                : props.invoiceData.map((invoice) => (
+                    <ListItem
+                      sx={{
+                        fontSize: '16px',
+                        color: '#32424E',
+                        width: 'auto',
+                      }}
+                      key={invoice.id}
+                      onClick={() => {
+                        setSelectedInvoice(invoice.id);
+                        if (isMobile) {
+                          router.push(`${invoice.id}`);
+                        } else {
+                          setShowDetails(invoice);
+                        }
+                      }}
+                    >
+                      <Invoice
+                        id={invoice.id}
+                        status={invoice.status}
+                        due={invoice.due}
+                        amount={invoice.amount}
+                        selected={selectedInvoice === invoice.id}
+                      />
+                    </ListItem>
+                  ))}
             </List>
           </Box>
         </Grid>

@@ -15,14 +15,14 @@ function HeaderToolbar(props) {
       .map((invoice) => {
         return invoice.status === 'OVERDUE' ? invoice.amount : 0;
       })
-      .reduce((previousValue, currentValue) => previousValue + currentValue);
+      .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   };
   const invoiceIssued = () => {
     return props.invoiceData
       .map((invoice) => {
         return invoice.status === 'ISSUED' ? invoice.amount : 0;
       })
-      .reduce((previousValue, currentValue) => previousValue + currentValue);
+      .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   };
 
   return (
@@ -64,7 +64,8 @@ function HeaderToolbar(props) {
                     : 0;
                 })
                 .reduce(
-                  (previousValue, currentValue) => previousValue + currentValue
+                  (previousValue, currentValue) => previousValue + currentValue,
+                  0
                 )}
               {'\u20AC'}
             </Typography>
@@ -74,76 +75,74 @@ function HeaderToolbar(props) {
             </Typography>
           </Stack>
         </Grid>
-       {invoiceOverdue() !== 0 && invoiceIssued() !== 0
-           && (
-              <Grid
-                item
+        {invoiceOverdue() !== 0 && invoiceIssued() !== 0 && (
+          <Grid
+            item
+            sx={{
+              width: 'auto',
+              height: '100%',
+              maxHeight: '146px',
+              margin: '5px',
+              backgroundColor: 'rgb(255,255,255, 0.2)',
+              display: `${display}`,
+            }}
+          >
+            <Stack
+              direction="row"
+              spacing={3}
+              sx={{
+                paddingTop: '5px',
+                paddingBottom: '5px',
+                margin: '20px',
+              }}
+            >
+              <Box
+                component="div"
+                textAlign="center"
                 sx={{
-                  width: 'auto',
-                  height: '100%',
-                  maxHeight: '146px',
-                  margin: '5px',
-                  backgroundColor: 'rgb(255,255,255, 0.2)',
-                  display: `${display}`,
+                  width: '100%',
+                  minWidth: '164px',
+                  height: 'auto',
                 }}
               >
-                <Stack
-                  direction="row"
-                  spacing={3}
-                  sx={{
-                    paddingTop: '5px',
-                    paddingBottom: '5px',
-                    margin: '20px',
-                  }}
-                >
-                  <Box
-                    component="div"
-                    textAlign="center"
-                    sx={{
-                      width: '100%',
-                      minWidth: '164px',
-                      height: 'auto',
-                    }}
-                  >
-                    <Typography>
-                      <HistoryOutlined />
-                    </Typography>
-                    <Typography variant="caption">Overdue balance</Typography>
-                    <Typography variant="h6">
-                      {invoiceOverdue()}
-                      {'\u20AC'}
-                    </Typography>
-                  </Box>
-                  <div>
-                  <Divider
-                    variant="inset"
-                    orientation="vertical"
-                    light
-                    sx={{ margin: 0, borderColor: '#fff' }}
-    
-                  />
-                  </div>
-                  <Box
-                    component="div"
-                    textAlign="center"
-                    sx={{
-                      width: '100%',
-                      minWidth: '164px',
-                      height: 'auto',
-                    }}
-                  >
-                    <Typography>
-                      <CalendarTodayOutlined />
-                    </Typography>
-                    <Typography variant="caption">Due on 21/10/2020</Typography>
-                    <Typography variant="h6">
-                      {invoiceIssued()}
-                      {'\u20AC'}
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Grid>
-            )}
+                <Typography>
+                  <HistoryOutlined />
+                </Typography>
+                <Typography variant="caption">Overdue balance</Typography>
+                <Typography variant="h6">
+                  {invoiceOverdue()}
+                  {'\u20AC'}
+                </Typography>
+              </Box>
+              <div>
+                <Divider
+                  variant="inset"
+                  orientation="vertical"
+                  light
+                  sx={{ margin: 0, borderColor: '#fff' }}
+                />
+              </div>
+              <Box
+                component="div"
+                textAlign="center"
+                sx={{
+                  width: '100%',
+                  minWidth: '164px',
+                  height: 'auto',
+                }}
+              >
+                <Typography>
+                  <CalendarTodayOutlined />
+                </Typography>
+                <Typography variant="caption">Due on 21/10/2020</Typography>
+                <Typography variant="h6">
+                  {invoiceIssued()}
+                  {'\u20AC'}
+                </Typography>
+              </Box>
+            </Stack>
+          </Grid>
+        )}
       </Grid>
     </Box>
   );

@@ -33,46 +33,51 @@ function ResponsiveSidebar() {
       >
         <Typography
           variant="caption"
-          sx={{ textAlign: 'right', marginRight: '5px' }}
+          sx={{ textAlign: 'right', marginRight: '7px' }}
         >
           Viasat
         </Typography>
         <Typography
           variant="subtitle1"
-          sx={{ fontSize: '12px', marginLeft: '5px' }}
+          sx={{ fontSize: '12px', marginLeft: '7px' }}
         >
           Alex Garcia
         </Typography>
         <Typography
           variant="caption"
-          sx={{ fontSize: '12px', opacity: 0.8, marginLeft: '5px' }}
+          sx={{ fontSize: '12px', opacity: 0.8, marginLeft: '7px' }}
         >
           alex.garcia@gmail.com
         </Typography>
       </Stack>
       <List>
-        <ListItem button>
+        <ListItem>
           <ListItemIcon>
             <HomeOutlined />
           </ListItemIcon>
-          <ListItemText primary="HOME" />
+          <ListItemText>HOME</ListItemText>
         </ListItem>
-        <ListItem button>
+        <ListItem
+          button
+          sx={{
+            backgroundColor: '#F2F5F8',
+            color: '#04819E',
+            boxShadow:
+              ' inset 0px -1px 0px rgba(0, 0, 0, 0.15), inset 3px 0px 0px #04819E',
+          }}
+        >
           <ListItemIcon>
-            <AccountBalanceWalletOutlined />
+            <AccountBalanceWalletOutlined sx={{ color: '#04819E' }} />
           </ListItemIcon>
           <ListItemText primary="BILLING" />
         </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem button>
+        <ListItem>
           <ListItemIcon>
             <AccountCircleOutlined />
           </ListItemIcon>
           <ListItemText primary="ACCOUNT SETTINGS" />
         </ListItem>
-        <ListItem button>
+        <ListItem>
           <ListItemIcon>
             <ContactSupportOutlined />
           </ListItemIcon>
@@ -81,7 +86,7 @@ function ResponsiveSidebar() {
       </List>
       <Divider />
       <List>
-        <ListItem button>
+        <ListItem>
           <ListItemIcon>
             <PowerSettingsNewOutlined />
           </ListItemIcon>
@@ -94,10 +99,9 @@ function ResponsiveSidebar() {
   return (
     <Box
       sx={{
-       
         display: 'flex',
         fontSize: '14px',
-        fontWeight: '700',
+        fontWeight: 'bold',
         color: '#32424E',
         backgroundColor: '#FFFFFF',
         boxShadow: '.3em 0 .3em -.4em #888',

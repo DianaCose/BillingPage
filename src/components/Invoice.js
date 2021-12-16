@@ -21,11 +21,12 @@ function Invoice(props) {
     'December',
   ];
 
+  const newDate = props.due.split("/");
+
+  const getMonth = MONTHS[newDate[1] - 1];
 
   return (
     <Paper 
-    button
-      variant="outlined"
       square
       sx={{
         display: 'flex',
@@ -37,8 +38,13 @@ function Invoice(props) {
         width: '100%',
         maxWidth: '661px',
         cursor: 'pointer',
-        
-      }}
+      //   border: props.isSelected
+      //   ? "2px solid rgba(10, 165, 171, 0.4)"
+      //   : "undefined",
+      // boxShadow: "inset 0px -1px 0px rgba(50, 66, 78, 0.1)",
+      // "&:not(:first-of-type)": { marginTop: "16px" },
+        }}
+    
     >
       <Stack
         spacing={1}
@@ -52,7 +58,7 @@ function Invoice(props) {
           Invoice {props.id}
         </Typography>
         <Typography variant="body1" sx={{ fontSize: 20, fontWeight: 'bold' }}>
-          October
+          {getMonth}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 16, opacity: '0.6' }}>
           Due on <strong>{props.due}</strong>

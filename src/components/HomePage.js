@@ -18,7 +18,7 @@ function HomePage(props) {
       }}
     >
       <HeaderTop />
-      <HeaderToolbar />
+      <HeaderToolbar invoiceData={invoiceData}/>
       <Invoices invoiceData={invoiceData} />
     </Box>
   );

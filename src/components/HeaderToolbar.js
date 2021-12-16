@@ -5,12 +5,9 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import CalendarTodayOutlined from '@mui/icons-material/CalendarTodayOutlined';
 import HistoryOutlined from '@mui/icons-material/HistoryOutlined';
-import { invoiceData} from '../../InvoiceDatabase';
 
 
-
-
-function HeaderToolbar() {
+function HeaderToolbar(props) {
   return (
     <Box
       component="div"
@@ -41,12 +38,23 @@ function HeaderToolbar() {
               Account balance
             </Typography>
             <Typography variant="h2" sx={{ fontSize: '56px' }}>
-              174,97{'\u20AC'}
+              {props.invoiceData
+                .map((invoice) => {
+                  console.log('invoice', invoice);
+                  return invoice.status === 'ISSUED' ||
+                    invoice.status === 'OVERDUE'
+                    ? invoice.amount
+                    : 0;
+                })
+                .reduce(
+                  (previousValue, currentValue) => previousValue + currentValue
+                )}
+              {'\u20AC'}
             </Typography>
             <Typography variant="caption" sx={{ fontSize: '14px' }}>
               Next invoice will be issued on
-              <br />
-              21/11/2020
+              <br/>
+              {props.due}
             </Typography>
           </Stack>
         </Grid>

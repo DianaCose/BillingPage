@@ -17,6 +17,8 @@ function Invoices(props) {
   const { breakpoints } = useTheme();
   const isMobile = breakpoints.down('md');
 
+  const [selected, setSelected] = useState(false);
+
   return (
     <Box
       component="div"
@@ -67,12 +69,24 @@ function Invoices(props) {
 
               {props.invoiceData.map((invoice) => (
                 <ListItem
+                sx={{
+                  fontSize: '16px',
+                  color: '#32424E',
+                  width: 'auto',
+                }}
+                // isSelected={
+                //   !isMobile &&
+                //   selectedInvoice &&
+                //   invoice.id == showDetails.id
+                // }
+                  
                   key={invoice.id}
                   onClick={() => {
-                    setShowDetails(invoice);
                     if (isMobile) {
                       router.push(`${invoice.id}`);
-                    }
+                    } 
+                      setShowDetails(invoice);
+                   
                   }}
                 >
                   <Invoice
@@ -80,8 +94,7 @@ function Invoices(props) {
                     status={invoice.status}
                     due={invoice.due}
                     amount={invoice.amount}
-    
-                    
+                 
                   />
                 </ListItem>
               ))}
@@ -93,7 +106,7 @@ function Invoices(props) {
           item
           sx={{ display: { xs: 'none', md: 'flex' }, marginTop: '60px' }}
         >
-          {showDetails && !isMobile && ( 
+          { showDetails && !isMobile && ( 
             <InvoiceDetails
               invoice={showDetails}
               onClose={() => {

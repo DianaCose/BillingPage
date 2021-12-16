@@ -1,6 +1,6 @@
 export const invoiceData = [
-  { id: 9, status: 'OVERDUE', due: '20/01/2021', amount: 59.99 },
-  { id: 8, status: 'ISSUED', due: '18/12/2020', amount: 69.99 },
+  { id: 9, status: 'ISSUED', due: '20/01/2021', amount: 59.99 },
+  { id: 8, status: 'OVERDUE', due: '18/12/2020', amount: 69.99 },
   { id: 7, status: 'PAID', due: '15/11/2020', amount: 69.99 },
   { id: 6, status: 'PAID', due: '18/10/2020', amount: 79.99 },
   { id: 5, status: 'PAID', due: '18/09/2020', amount: 49.99 },

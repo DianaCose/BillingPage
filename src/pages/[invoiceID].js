@@ -33,7 +33,9 @@ function InvoiceDetailsPage() {
       }}
     >
       <Stack direction="row" spacing={1} sx={{ margin: '7px' }}>
-        <IconButton edge="start" sx={{ color: 'black' }}>
+        <IconButton edge="start" sx={{ color: 'black' }} onClick={() => {
+            router.back();
+          }}>
           <ArrowBackIcon />
         </IconButton>
         <Typography

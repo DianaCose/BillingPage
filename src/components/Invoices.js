@@ -1,3 +1,4 @@
+import useMediaQuery from '@mui/material/useMediaQuery';
 import {
   Box,
   List,
@@ -15,9 +16,9 @@ function Invoices(props) {
   const [showDetails, setShowDetails] = useState(null);
   const router = useRouter();
   const { breakpoints } = useTheme();
-  const isMobile = breakpoints.down('md');
+  const isMobile = useMediaQuery(breakpoints.down('md'));
 
-  const [selected, setSelected] = useState(false);
+  const [selectedInvoice, setSelectedInvoice] = useState(false);
 
   return (
     <Box
@@ -27,6 +28,7 @@ function Invoices(props) {
         maxWidth: '100%',
         minHeight: '100vh',
         backgroundColor: '#DEE4E8',
+        paddingBottom: '88px',
       }}
       justifyContent="center"
       alignItems="center"
@@ -69,24 +71,25 @@ function Invoices(props) {
 
               {props.invoiceData.map((invoice) => (
                 <ListItem
-                sx={{
-                  fontSize: '16px',
-                  color: '#32424E',
-                  width: 'auto',
-                }}
-                // isSelected={
-                //   !isMobile &&
-                //   selectedInvoice &&
-                //   invoice.id == showDetails.id
-                // }
-                  
+                  sx={{
+                    fontSize: '16px',
+                    color: '#32424E',
+                    width: 'auto',
+                  }}
+                  // isSelected={
+                  //   !isMobile &&
+                  //   selectedInvoice &&
+                  //   invoice.id == showDetails.id
+                  // }
+
                   key={invoice.id}
                   onClick={() => {
+                    setSelectedInvoice(invoice.id);
                     if (isMobile) {
                       router.push(`${invoice.id}`);
-                    } 
+                    } else {
                       setShowDetails(invoice);
-                   
+                    }
                   }}
                 >
                   <Invoice
@@ -94,7 +97,7 @@ function Invoices(props) {
                     status={invoice.status}
                     due={invoice.due}
                     amount={invoice.amount}
-                 
+                    selected={selectedInvoice === invoice.id}
                   />
                 </ListItem>
               ))}
@@ -106,11 +109,12 @@ function Invoices(props) {
           item
           sx={{ display: { xs: 'none', md: 'flex' }, marginTop: '60px' }}
         >
-          { showDetails && !isMobile && ( 
+          {showDetails && !isMobile && (
             <InvoiceDetails
               invoice={showDetails}
               onClose={() => {
                 setShowDetails(null);
+                setSelectedInvoice(null);
               }}
             />
           )}

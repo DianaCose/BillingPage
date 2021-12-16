@@ -21,9 +21,7 @@ function Invoice(props) {
     'December',
   ];
 
-  const newDate = props.due.split("/");
-
-  const getMonth = MONTHS[newDate[1] - 1];
+  const getMonth = MONTHS[props.due.split("/")[1] - 1];
 
   return (
     <Paper 
@@ -38,6 +36,7 @@ function Invoice(props) {
         width: '100%',
         maxWidth: '661px',
         cursor: 'pointer',
+        border: `1px solid ${props.selected ? 'blue' : 'transparent'}`,
       //   border: props.isSelected
       //   ? "2px solid rgba(10, 165, 171, 0.4)"
       //   : "undefined",

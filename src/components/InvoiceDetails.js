@@ -1,10 +1,30 @@
 import { Paper, Stack, Typography, Divider, Button } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 
+function InvoiceDetails({ invoice, onClose }) {
+  const { amount, due, id, status } = invoice;
 
-function InvoiceDetails({invoice, onClose}) {
+  const TEXT = {
+    ISSUED: 'Due on',
+    PAID: ' Paid on',
+    OVERDUE: 'Was due on',
+  };
+  const date = new Date(due);
+  const currentDate = new Intl.DateTimeFormat(['ban', 'id']).format(date);
 
-  const {amount, due, id, status } = invoice;
+  const currentMonth = () => {
+    const date = new Date(due);
+    return new Intl.DateTimeFormat(['ban', 'id']).format(
+      date.setMonth(date.getMonth())
+    );
+  };
+  const nextMonth = () => {
+    const date = new Date(due);
+    return new Intl.DateTimeFormat(['ban', 'id']).format(
+      date.setMonth(date.getMonth() + 1)
+    );
+  };
+
   return (
     <Paper
       sx={{
@@ -14,7 +34,7 @@ function InvoiceDetails({invoice, onClose}) {
         maxHeight: { xs: '100vh', md: '337px' },
         padding: { xs: '0', md: '10px' },
         marginBottom: { xs: '0', md: '70px' },
-        display: {xs:'none', md: 'block'}
+        display: { xs: 'none', md: 'block' },
       }}
     >
       <Stack direction="row" spacing={24} sx={{ marginBottom: '7px' }}>
@@ -24,14 +44,13 @@ function InvoiceDetails({invoice, onClose}) {
         >
           View invoice as PDF
         </Typography>
-      
-        <ClearIcon onClick={onClose}/>
-    
+
+        <ClearIcon onClick={onClose} />
       </Stack>
 
       <Stack
         direction="row"
-        spacing={24}
+        spacing={21}
         sx={{
           background: {
             xs: 'linear-gradient(90deg, #26A1B7 0%, #0372AE 100%)',
@@ -46,7 +65,7 @@ function InvoiceDetails({invoice, onClose}) {
           Invoice number
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 14, opacity: '0.4' }}>
-          Paid on 
+          {TEXT[status]}
         </Typography>
       </Stack>
 
@@ -65,10 +84,10 @@ function InvoiceDetails({invoice, onClose}) {
           variant="subtitle1"
           sx={{ fontSize: '14px', opacity: '0.4' }}
         >
-         {id}
+          {id}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 14, opacity: '0.4' }}>
-         {due}
+          {currentDate}
         </Typography>
       </Stack>
 
@@ -101,10 +120,11 @@ function InvoiceDetails({invoice, onClose}) {
           variant="subtitle1"
           sx={{ fontSize: '14px', opacity: '0.6' }}
         >
-          21/09/2020-21/10/2020
+          {currentMonth()} - {nextMonth()}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 16 }}>
-         {amount}{'\u20AC'}
+          {amount}
+          {'\u20AC'}
         </Typography>
       </Stack>
 
@@ -125,7 +145,8 @@ function InvoiceDetails({invoice, onClose}) {
           variant="body1"
           sx={{ fontSize: '20px', fontWeight: 'bold' }}
         >
-          {amount}{'\u20AC'}
+          {amount}
+          {'\u20AC'}
         </Typography>
       </Stack>
     </Paper>

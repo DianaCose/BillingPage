@@ -1,11 +1,18 @@
 import { Typography, Paper, Stack, Chip, Box } from '@mui/material';
 
 function Invoice(props) {
+
   const COLORS = {
     ISSUED: '#64CEFB',
     PAID: '#7DBE00',
     OVERDUE: '#CF4520',
   };
+   const TEXT = {
+    ISSUED: 'Due on',
+    PAID:' Paid on',
+    OVERDUE:'Was due on',
+  }
+
   const MONTHS = [
     'January',
     'February',
@@ -20,8 +27,8 @@ function Invoice(props) {
     'November',
     'December',
   ];
-  const getMonth = MONTHS[props.due.split("/")[1] - 1];
 
+  const getMonth = MONTHS[props.due.split("/")[1] - 1];
   const date = new Date(props.due);
   const currentDate = new Intl.DateTimeFormat(['ban', 'id']).format(date);
 
@@ -57,7 +64,7 @@ function Invoice(props) {
           {getMonth}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 16, opacity: '0.6' }}>
-          Due on <strong>{currentDate}</strong>
+        {TEXT[props.status]}<strong> {currentDate}</strong>
         </Typography>
       </Stack>
 

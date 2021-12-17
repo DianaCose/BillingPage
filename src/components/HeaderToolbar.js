@@ -40,20 +40,13 @@ function HeaderToolbar(props) {
     const indexLastIssuedInvoice = props.invoiceData
       .map((invoice) => invoice.status)
       .lastIndexOf('ISSUED');
-
     const date = new Date(props.invoiceData[indexLastIssuedInvoice].due);
-    console.log('date', date);
-
     const currentMonth = date.getMonth();
     console.log('current month', currentMonth);
-
     return new Intl.DateTimeFormat(['ban', 'id']).format(
       date.setMonth(currentMonth + 1)
     );
   };
-
-  console.log(nextMonth());
-  console.log(props.invoiceData[0]);
 
   return (
     <Box
@@ -85,7 +78,7 @@ function HeaderToolbar(props) {
               Account balance
             </Typography>
             <Typography variant="h2" sx={{ fontSize: '56px' }}>
-              {props.invoiceData
+              { Number(props.invoiceData
                 .map((invoice) => {
                   return invoice.status === 'ISSUED' ||
                     invoice.status === 'OVERDUE'
@@ -95,7 +88,7 @@ function HeaderToolbar(props) {
                 .reduce(
                   (previousValue, currentValue) => previousValue + currentValue,
                   0
-                )}
+                )).toFixed(2)}
               {'\u20AC'}
             </Typography>
             <Typography variant="caption" sx={{ fontSize: '14px' }}>

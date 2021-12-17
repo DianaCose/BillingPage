@@ -20,8 +20,10 @@ function Invoice(props) {
     'November',
     'December',
   ];
-
   const getMonth = MONTHS[props.due.split("/")[1] - 1];
+
+  const date = new Date(props.due);
+  const currentDate = new Intl.DateTimeFormat(['ban', 'id']).format(date);
 
   return (
     <Paper 
@@ -36,12 +38,7 @@ function Invoice(props) {
         width: '100%',
         maxWidth: '661px',
         cursor: 'pointer',
-        border: `1px solid ${props.selected ? 'blue' : 'transparent'}`,
-      //   border: props.isSelected
-      //   ? "2px solid rgba(10, 165, 171, 0.4)"
-      //   : "undefined",
-      // boxShadow: "inset 0px -1px 0px rgba(50, 66, 78, 0.1)",
-      // "&:not(:first-of-type)": { marginTop: "16px" },
+        border: `2px solid ${props.selected ? '#006EAD' : 'transparent'}`,
         }}
     
     >
@@ -60,7 +57,7 @@ function Invoice(props) {
           {getMonth}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: 16, opacity: '0.6' }}>
-          Due on <strong>{props.due}</strong>
+          Due on <strong>{currentDate}</strong>
         </Typography>
       </Stack>
 

@@ -25,6 +25,36 @@ function HeaderToolbar(props) {
       .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   };
 
+  const recentInvoice = () => {
+    const indexLastIssuedInvoice = props.invoiceData
+      .map((invoice) => invoice.status)
+      .lastIndexOf('ISSUED');
+    const date = new Date(props.invoiceData[indexLastIssuedInvoice].due);
+
+    return new Intl.DateTimeFormat(['ban', 'id']).format(
+      date.setMonth(date.getMonth())
+    );
+  };
+
+  const nextMonth = () => {
+    const indexLastIssuedInvoice = props.invoiceData
+      .map((invoice) => invoice.status)
+      .lastIndexOf('ISSUED');
+
+    const date = new Date(props.invoiceData[indexLastIssuedInvoice].due);
+    console.log('date', date);
+
+    const currentMonth = date.getMonth();
+    console.log('current month', currentMonth);
+
+    return new Intl.DateTimeFormat(['ban', 'id']).format(
+      date.setMonth(currentMonth + 1)
+    );
+  };
+
+  console.log(nextMonth());
+  console.log(props.invoiceData[0]);
+
   return (
     <Box
       component="div"
@@ -57,7 +87,6 @@ function HeaderToolbar(props) {
             <Typography variant="h2" sx={{ fontSize: '56px' }}>
               {props.invoiceData
                 .map((invoice) => {
-                  console.log('invoice', invoice);
                   return invoice.status === 'ISSUED' ||
                     invoice.status === 'OVERDUE'
                     ? invoice.amount
@@ -70,8 +99,8 @@ function HeaderToolbar(props) {
               {'\u20AC'}
             </Typography>
             <Typography variant="caption" sx={{ fontSize: '14px' }}>
-              Next invoice will be issued on
-              {props.due}
+              Next invoice will be issued on <br />
+              {nextMonth()}
             </Typography>
           </Stack>
         </Grid>
@@ -134,7 +163,9 @@ function HeaderToolbar(props) {
                 <Typography>
                   <CalendarTodayOutlined />
                 </Typography>
-                <Typography variant="caption">Due on 21/10/2020</Typography>
+                <Typography variant="caption">
+                  Due on {recentInvoice()}
+                </Typography>
                 <Typography variant="h6">
                   {invoiceIssued()}
                   {'\u20AC'}

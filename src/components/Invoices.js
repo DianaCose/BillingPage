@@ -17,7 +17,7 @@ function Invoices(props) {
   const [showDetails, setShowDetails] = useState(null);
   const router = useRouter();
   const { breakpoints } = useTheme();
-  const isMobile = useMediaQuery(breakpoints.down('md'));
+  const isMobile = useMediaQuery(breakpoints.down('lg'));
 
   const [selectedInvoice, setSelectedInvoice] = useState(false);
 
@@ -104,7 +104,7 @@ function Invoices(props) {
 
         <Grid
           item
-          sx={{ display: { xs: 'none', md: 'flex' }, marginTop: '60px' }}
+          sx={{ display: { xs: 'none', lg: 'flex' }, marginTop: '60px' }}
         >
           {showDetails && !isMobile && (
             <InvoiceDetails

@@ -37,7 +37,7 @@ function InvoiceDetails({ invoice, onClose }) {
         display: { xs: 'none', md: 'block' },
       }}
     >
-      <Stack direction="row" spacing={24} sx={{ marginBottom: '7px' }}>
+      <Stack direction="row" justifyContent = 'space-between' sx={{ marginBottom: '7px' }}>
         <Typography
           variant="subtitle1"
           sx={{ color: '#0AA5AB', fontSize: '14px', fontWeight: 'bold' }}
@@ -50,7 +50,7 @@ function InvoiceDetails({ invoice, onClose }) {
 
       <Stack
         direction="row"
-        spacing={21}
+        justifyContent = 'space-between'
         sx={{
           background: {
             xs: 'linear-gradient(90deg, #26A1B7 0%, #0372AE 100%)',
@@ -71,7 +71,7 @@ function InvoiceDetails({ invoice, onClose }) {
 
       <Stack
         direction="row"
-        spacing={32}
+        justifyContent = 'space-between'
         sx={{
           marginBottom: '25px',
           background: {
@@ -91,7 +91,7 @@ function InvoiceDetails({ invoice, onClose }) {
         </Typography>
       </Stack>
 
-      <Stack direction="row" spacing={26} sx={{ marginBottom: '10px' }}>
+      <Stack direction="row" justifyContent = 'space-between' sx={{ marginBottom: '10px' }}>
         <Typography
           variant="body1"
           sx={{ fontSize: '14px', fontWeight: 'bold' }}
@@ -106,14 +106,14 @@ function InvoiceDetails({ invoice, onClose }) {
         </Typography>
       </Stack>
 
-      <Stack direction="row" spacing={17} sx={{ color: '#32424E' }}>
+      <Stack direction="row" justifyContent = 'space-between' sx={{ color: '#32424E' }}>
         <Typography variant="subtitle1" sx={{ fontSize: '14px' }}>
           ILIMITADA 30
         </Typography>
       </Stack>
       <Stack
         direction="row"
-        spacing={19}
+        justifyContent = 'space-between'
         sx={{ marginBottom: '7px', color: '#32424E' }}
       >
         <Typography
@@ -132,7 +132,7 @@ function InvoiceDetails({ invoice, onClose }) {
 
       <Stack
         direction="row"
-        spacing={24}
+        justifyContent = 'space-between'
         sx={{ marginTop: '10px', marginBottom: '30px', color: '#32424E' }}
       >
         <Typography

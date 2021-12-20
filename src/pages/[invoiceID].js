@@ -14,21 +14,31 @@ function InvoiceDetailsPage() {
   const router = useRouter();
   const { invoiceID } = router.query;
 
-  console.log(router.query);
-
   const invoice = invoiceData.filter(
     (invoice) => Number(invoiceID) === invoice.id
   )[0];
 
-  console.log(invoiceData);
-  console.log(invoice);
+  const date = new Date(invoice.due);
+  const currentDate = new Intl.DateTimeFormat(['ban', 'id']).format(date);
+  const currentMonth = () => {
+    const date = new Date(invoice.due);
+    return new Intl.DateTimeFormat(['ban', 'id']).format(
+      date.setMonth(date.getMonth())
+    );
+  };
+  const nextMonth = () => {
+    const date = new Date(invoice.due);
+    return new Intl.DateTimeFormat(['ban', 'id']).format(
+      date.setMonth(date.getMonth() + 1)
+    );
+  };
 
   return (
     <Box
       sx={{
         width: '100vw',
         height: '100vh',
-        padding: { xs: '0', md: '10px' },
+        padding: { xs: '0', lg: '10px' },
         marginBottom: { xs: '0', md: '70px' },
       }}
     >
@@ -48,9 +58,10 @@ function InvoiceDetailsPage() {
 
       <Stack
         direction="row"
-        spacing={47}
+        justifyContent = 'space-between'
         sx={{
           padding: '10px 10px 0 10px',
+          marginRight: '20px',
           background: 'linear-gradient(90deg, #26A1B7 0%, #0372AE 100%)',
           color: ' #FFFFFF',
         }}
@@ -65,9 +76,10 @@ function InvoiceDetailsPage() {
 
       <Stack
         direction="row"
-        spacing={40}
+        justifyContent = 'space-between'
         sx={{
           marginBottom: '25px',
+          marginRight: '20px',
           padding: '0 10px 10px 10px',
           background: 'linear-gradient(90deg, #26A1B7 0%, #0372AE 100%)',
           color: ' #FFFFFF',
@@ -77,14 +89,14 @@ function InvoiceDetailsPage() {
           {invoice.id}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
-          {invoice.due}
+          {currentDate}
         </Typography>
       </Stack>
 
       <Stack
         direction="row"
-        spacing={50}
-        sx={{ marginBottom: '10px', padding: '10px', color: '#32424E' }}
+        justifyContent = 'space-between'
+        sx={{ marginBottom: '10px', padding: '10px', color: '#32424E',marginRight: '20px', }}
       >
         <Typography
           variant="body1"
@@ -102,8 +114,8 @@ function InvoiceDetailsPage() {
 
       <Stack
         direction="row"
-        spacing={45}
-        sx={{ paddingLeft: '10px', paddingRight: '10px', color: '#32424E' }}
+        justifyContent = 'space-between'
+        sx={{ paddingLeft: '10px', paddingRight: '10px', color: '#32424E', marginRight: '20px', }}
       >
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
           ILIMITADA 30
@@ -111,11 +123,11 @@ function InvoiceDetailsPage() {
       </Stack>
       <Stack
         direction="row"
-        spacing={44}
-        sx={{ marginBottom: '7px', paddingLeft: '10px', color: '#32424E' }}
+        justifyContent = 'space-between'
+        sx={{ marginBottom: '7px', paddingLeft: '10px', color: '#32424E', marginRight: '25px', }}
       >
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
-          {invoice.due}
+        {currentMonth()} - {nextMonth()}
         </Typography>
         <Typography variant="subtitle1" sx={{ fontSize: '16px' }}>
           {invoice.amount}{'\u20AC'}
@@ -125,12 +137,13 @@ function InvoiceDetailsPage() {
 
       <Stack
         direction="row"
-        spacing={52}
+        justifyContent = 'space-between'
         sx={{
           marginTop: '20px',
           marginBottom: '20px',
           paddingLeft: '10px',
           color: '#32424E',
+          marginRight: '25px',
         }}
       >
         <Typography
@@ -151,8 +164,8 @@ function InvoiceDetailsPage() {
         <Button
           variant="outlined"
           sx={{
-            display: { xs: 'block', md: 'none' },
-            margin: '30px',
+            display: { xs: 'block', lg: 'none' },
+            margin: '30px 50px 30px 50px',
             padding: '10px',
             borderRadius: '30px',
             color: '#465967',

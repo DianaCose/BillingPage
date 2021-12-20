@@ -30,7 +30,6 @@ function HeaderToolbar(props) {
       .map((invoice) => invoice.status)
       .lastIndexOf('ISSUED');
     const date = new Date(props.invoiceData[indexLastIssuedInvoice].due);
-
     return new Intl.DateTimeFormat(['ban', 'id']).format(
       date.setMonth(date.getMonth())
     );

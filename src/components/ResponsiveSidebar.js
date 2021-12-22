@@ -1,0 +1,149 @@
+import {
+  Box,
+  Drawer,
+  Divider,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+} from '@mui/material';
+import {
+  HomeOutlined,
+  AccountBalanceWalletOutlined,
+  AccountCircleOutlined,
+  ContactSupportOutlined,
+  PowerSettingsNewOutlined,
+} from '@mui/icons-material';
+
+export const drawerWidth = 241;
+
+function ResponsiveSidebar() {
+  const drawer = (
+    <div>
+      <Stack
+        sx={{
+          backgroundColor: '#014656',
+          color: '#ffff',
+          direction: 'column',
+          height: '80px',
+          width: '100%',
+        }}
+      >
+        <Typography
+          variant="caption"
+          sx={{ textAlign: 'right', marginRight: '7px' }}
+        >
+          Viasat
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{ fontSize: '12px', marginLeft: '7px' }}
+        >
+          Alex Garcia
+        </Typography>
+        <Typography
+          variant="caption"
+          sx={{ fontSize: '12px', opacity: 0.8, marginLeft: '7px' }}
+        >
+          alex.garcia@gmail.com
+        </Typography>
+      </Stack>
+      <List>
+        <ListItem>
+          <ListItemIcon>
+            <HomeOutlined />
+          </ListItemIcon>
+          <ListItemText>HOME</ListItemText>
+        </ListItem>
+        <ListItem
+          button
+          sx={{
+            backgroundColor: '#F2F5F8',
+            color: '#04819E',
+            boxShadow:
+              ' inset 0px -1px 0px rgba(0, 0, 0, 0.15), inset 3px 0px 0px #04819E',
+          }}
+        >
+          <ListItemIcon>
+            <AccountBalanceWalletOutlined sx={{ color: '#04819E' }} />
+          </ListItemIcon>
+          <ListItemText primary="BILLING" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <AccountCircleOutlined />
+          </ListItemIcon>
+          <ListItemText primary="ACCOUNT SETTINGS" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <ContactSupportOutlined />
+          </ListItemIcon>
+          <ListItemText primary="HELP FAQ" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem>
+          <ListItemIcon>
+            <PowerSettingsNewOutlined />
+          </ListItemIcon>
+          <ListItemText primary="LOG OUT" />
+        </ListItem>
+      </List>
+    </div>
+  );
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        fontSize: '14px',
+        fontWeight: 'bold',
+        color: '#32424E',
+        backgroundColor: '#FFFFFF',
+        boxShadow: '.3em 0 .3em -.4em #888',
+      }}
+    >
+      <Box
+        component="nav"
+        sx={{
+          width: { sm: drawerWidth },
+          flexShrink: { sm: 0 },
+        }}
+      >
+        <Drawer
+          variant="temporary"
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+              height: 'calc(100vh - 60px)',
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+              height: 'calc(100vh - 60px)',
+            },
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+    </Box>
+  );
+}
+
+export default ResponsiveSidebar;
